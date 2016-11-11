@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    tools:context="com.happybox.applic.RegistroActivity"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/lblTituloSolicitud"
+            android:text="Registro"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
+
+
+
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/lblRuc"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="RUC"
+                />
+
+            <EditText
+                android:id="@+id/txtRuc"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:ems="8"
+                android:maxLength="11"
+                android:digits="1234567890"
+                android:inputType="number"
+                />
+
+            <TextView
+                android:id="@+id/lblRazonSocial"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Razón Social"
+                />
+
+            <EditText
+                android:id="@+id/txtRazonSocial"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:ems="8"
+
+                />
+
+            <TextView
+                android:id="@+id/lblClave"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Clave"
+                />
+
+            <EditText
+                android:id="@+id/txtPassword"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:ems="8"
+                android:inputType="textPassword"
+                />
+
+            <TextView
+                android:id="@+id/lblListCategoria"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Seleccione las categorias que se ajustan a su empresa"
+                />
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Bien"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Consultoria"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Obra"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Servicio"/>
+
+            <TextView
+                android:id="@+id/lblAbono"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="¿Desea abonar para una cuenta VIP?"
+                />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                >
+                <android.support.v7.widget.AppCompatRadioButton
+                android:layout_width="wrap_content" android:text="Si"
+                android:layout_height="wrap_content" />
+
+                <android.support.v7.widget.AppCompatRadioButton
+                android:layout_width="wrap_content" android:text="No"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/lblTipoTarjeta"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Seleccione tipo de Tarjeta"
+                />
+
+
+
+            <Spinner
+                android:id="@+id/cboTipoTarjeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/items"
+                ></Spinner>
+
+            <TextView
+                android:id="@+id/lblNumTarjeta"
+                android:text="Numero de Tarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/txtNumTarjeta"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:ems="4"
+                android:maxLength="18"
+                android:digits="1234567890"
+                android:inputType="number"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Terminar"
+               />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+
