@@ -1,7 +1,9 @@
 package com.happybox.applic;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Spinner;
 
 public class RegistroActivity extends AppCompatActivity {
@@ -15,6 +17,13 @@ public class RegistroActivity extends AppCompatActivity {
 
         cboTipoTarjeta=(Spinner)findViewById(R.id.cboTipoTarjeta);
         //cboTipoTarjeta.set
+
+    }
+
+    public void registrarCliente(View view) {
+
+        Intent objIntent = new Intent(this, LoginActivity.class);
+        startActivity(objIntent);
 
     }
 }
