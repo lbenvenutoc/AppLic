@@ -192,7 +192,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask.execute((Void) null);
         }
         */
+
+
+        String ruc = mEmailView.getText().toString();
+        String claUsu = mPasswordView.getText().toString();
         Intent objIntent = new Intent(this, ListaLicitacionActivity.class);
+        objIntent.putExtra("ruc", ruc);
+        objIntent.putExtra("claUsu",claUsu);
         startActivity(objIntent);
     }
 

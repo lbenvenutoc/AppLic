@@ -15,4 +15,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!--URL RESTFul-->
+    <string name="url_acceso_usuario">http://localhost:8090/spring-rest-servidor/agenda/clientes/</string>
 </resources>

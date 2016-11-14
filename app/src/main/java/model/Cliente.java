@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by USUARIO on 11/11/2016.
@@ -19,6 +20,7 @@ public class Cliente implements Serializable{
     private String  numTarCli;
     private int flgAboCli;
     private int estCli;
+    private List<Categoria> lstCat;
 
     public int getCodCli() {
         return codCli;
@@ -98,5 +100,13 @@ public class Cliente implements Serializable{
 
     public void setEstCli(int estCli) {
         this.estCli = estCli;
+    }
+
+    public List<Categoria> getLstCat() {
+        return lstCat;
+    }
+
+    public void setLstCat(List<Categoria> lstCat) {
+        this.lstCat = lstCat;
     }
 }
