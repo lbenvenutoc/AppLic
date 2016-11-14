@@ -1,19 +1,15 @@
-package com.happybox.applic;
+package com.happybox.applic.actividades;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import endpoint.ClienteEndPoint;
-import model.Cliente;
+import com.happybox.applic.R;
+import com.happybox.applic.endpoint.ClienteEndPoint;
+import com.happybox.applic.modelo.Cliente;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

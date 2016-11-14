@@ -1,4 +1,4 @@
-package model;
+package com.happybox.applic.modelo;
 
 import java.io.Serializable;
 

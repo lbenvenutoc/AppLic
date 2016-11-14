@@ -1,6 +1,6 @@
-package endpoint;
+package com.happybox.applic.endpoint;
 
-import model.Cliente;
+import com.happybox.applic.modelo.Cliente;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
