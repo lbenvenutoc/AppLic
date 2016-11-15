@@ -17,7 +17,7 @@ import com.happybox.applic.endpoint.LicitacionEndPoint;
 import com.happybox.applic.modelo.Categoria;
 import com.happybox.applic.modelo.Cliente;
 import com.happybox.applic.modelo.Licitacion;
-import com.happybox.applic.servicio.LicitacionService;
+
 
 import java.security.AccessController;
 import java.util.ArrayList;

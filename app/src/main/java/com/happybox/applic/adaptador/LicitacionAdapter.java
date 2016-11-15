@@ -26,9 +26,10 @@ public class LicitacionAdapter extends RecyclerView.Adapter<LicitacionAdapter.Vi
 
     @Override
     public void onBindViewHolder(LicitacionAdapter.ViewHolder holder, int position) {
-        holder.lblIdLicitacion.setText(""+licitaciones.get(position).getCodLic());
-        holder.lblDesLicitacion.setText(licitaciones.get(position).getDesLic());
-        holder.lblMonLicitacion.setText(""+licitaciones.get(position).getMonLic());
+        holder.lblIdLicitacion.setText("Código: "+licitaciones.get(position).getCodLic());
+        holder.lblCatLicitacion.setText("Categoria: "+licitaciones.get(position).getDesCat());
+        holder.lblDesLicitacion.setText("Resumen: "+licitaciones.get(position).getDesLic());
+        holder.lblMonLicitacion.setText("Valor Referencial: "+licitaciones.get(position).getValRef()+" "+licitaciones.get(position).getMonLic());
     }
 
     @Override
@@ -39,11 +40,13 @@ public class LicitacionAdapter extends RecyclerView.Adapter<LicitacionAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView lblIdLicitacion;
+        TextView lblCatLicitacion;
         TextView lblDesLicitacion;
         TextView lblMonLicitacion;
         public ViewHolder(View itemView) {
             super(itemView);
             lblIdLicitacion = (TextView) itemView.findViewById(R.id.lblIdLicitacion);
+            lblCatLicitacion = (TextView) itemView.findViewById(R.id.lblCatLicitacion);
             lblDesLicitacion = (TextView) itemView.findViewById(R.id.lblDesLicitacion);
             lblMonLicitacion = (TextView) itemView.findViewById(R.id.lblMonLicitacion);
         }
