@@ -26,9 +26,9 @@ public class LicitacionAdapter extends RecyclerView.Adapter<LicitacionAdapter.Vi
 
     @Override
     public void onBindViewHolder(LicitacionAdapter.ViewHolder holder, int position) {
-        holder.lblIdLicitacion.setText(licitaciones.get(position).getCodLic());
+        holder.lblIdLicitacion.setText(""+licitaciones.get(position).getCodLic());
         holder.lblDesLicitacion.setText(licitaciones.get(position).getDesLic());
-        holder.lblMonLicitacion.setText(licitaciones.get(position).getMonLic());
+        holder.lblMonLicitacion.setText(""+licitaciones.get(position).getMonLic());
     }
 
     @Override

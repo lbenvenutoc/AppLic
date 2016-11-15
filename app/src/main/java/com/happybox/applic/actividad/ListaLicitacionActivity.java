@@ -36,7 +36,7 @@ public class ListaLicitacionActivity extends AppCompatActivity {
     TextView lblStatusDes;
     LicitacionAdapter licitacionAdapter;
     LinearLayoutManager licitacionLayoutManager;
-
+    List<Licitacion> lstLicitacionesTotales= new ArrayList<Licitacion>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,123 +51,41 @@ public class ListaLicitacionActivity extends AppCompatActivity {
         lblUsuarioDes.setText(cliente.getRucCli()+" - "+cliente.getRazSocCli());
         lblStatusDes.setText(cliente.getFlgAboCli()==0?"Normal":"VIP");
 
-
         licitacionLayoutManager = new LinearLayoutManager(this);
         licitacionRecyclerView.setLayoutManager(licitacionLayoutManager);
-        procesarLicitaciones(cliente.getLstCat().get(0).getCodCat());
-
-
-/*
-        licitacionRecyclerView = (RecyclerView) findViewById(R.id.licitacionRecyclerView);
-        licitacionAdapter = new LicitacionAdapter();
-        */
-
-    /*
-
-        Intent intent = getIntent();
-        String ruc = intent.getStringExtra("ruc");
-        String claUsu = intent.getStringExtra("claUsu");
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(getResources().getString(R.string.url_base))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-
-        ClienteEndPoint restCliente=retrofit.create(ClienteEndPoint.class);
-        LicitacionEndPoint restLicitacion=retrofit.create(LicitacionEndPoint.class);
-
-        Call<Cliente> call = restCliente.getCliente(ruc,claUsu);
-
-        call.enqueue(new Callback<Cliente>() {
-            @Override
-            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
-                Log.i("response status", ""+response.code());
-                switch (response.code()) {
-                    case 200:
-                        Cliente data = response.body();
-                        lblUsuarioDes.setText(data.getRucCli()+" - "+data.getRazSocCli());
-                        lblStatusDes.setText(data.getFlgAboCli()==0?"Normal":"VIP");
-                        break;
-                    case 401:
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<Cliente> call, Throwable t) {
-                Log.e("error", t.toString());
-            }
-        });
-
-
-
-
-        Call<List<Licitacion>> callList = restLicitacion.getLicitaciones(1);
-
-        callList.enqueue(new Callback<List<Licitacion>>() {
-            @Override
-            public void onResponse(Call<List<Licitacion>> call, Response<List<Licitacion>> response) {
-                Log.i("response status", ""+response.code());
-                switch (response.code()) {
-                    case 200:
-                        List<Licitacion> data = response.body();
-                        licitacionAdapter.setLicitaciones(data);
-
-
-                        break;
-                    case 401:
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Licitacion>> call, Throwable t) {
-                Log.e("error", t.toString());
-            }
-        });
-
-*/
-/*
-        licitacionLayoutManager = new LinearLayoutManager(this);
-        licitacionRecyclerView.setAdapter(licitacionAdapter);
-        licitacionRecyclerView.setLayoutManager(licitacionLayoutManager);
-*/
+        procesarLicitaciones(cliente.getLstCat());
 
     }
 
-    public void procesarLicitaciones(int categoria){
+    public void procesarLicitaciones(List<Categoria>lstCategorias){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(getResources().getString(R.string.url_base))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         LicitacionEndPoint restLicitacion=retrofit.create(LicitacionEndPoint.class);
-        //for(Categoria cat:lstCategorias){
-            Call<List<Licitacion>> callList = restLicitacion.getLicitaciones(categoria);
+        for(Categoria cat:lstCategorias){
+            Call<List<Licitacion>> callList = restLicitacion.getLicitaciones(cat.getCodCat());
 
             callList.enqueue(new Callback<List<Licitacion>>() {
                 @Override
                 public void onResponse(Call<List<Licitacion>> call, Response<List<Licitacion>> response) {
-                    Log.i("response status", ""+response.code());
+
+
+
                     switch (response.code()) {
                         case 200:
                             List<Licitacion> data=response.body();
+                            lstLicitacionesTotales.addAll(data);
                             licitacionAdapter = new LicitacionAdapter();
-                            licitacionAdapter.setLicitaciones(data);
+                            licitacionAdapter.setLicitaciones(lstLicitacionesTotales);
                             licitacionRecyclerView.setAdapter(licitacionAdapter);
-
                             break;
                         case 401:
                             break;
                         default:
                             break;
                     }
+
 
                 }
 
@@ -176,7 +94,7 @@ public class ListaLicitacionActivity extends AppCompatActivity {
                     Log.e("error", t.toString());
                 }
             });
-       // }
+        }
 
 
 

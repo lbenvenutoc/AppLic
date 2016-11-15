@@ -136,4 +136,24 @@ public class Licitacion implements Serializable{
     public void setDesCat(String desCat) {
         this.desCat = desCat;
     }
+
+    @Override
+    public String toString() {
+        return "Licitacion{" +
+                "codLic=" + codLic +
+                ", nomLic='" + nomLic + '\'' +
+                ", desLic='" + desLic + '\'' +
+                ", norAplLic='" + norAplLic + '\'' +
+                ", valRef=" + valRef +
+                ", fecPubLic=" + fecPubLic +
+                ", fecTerLic=" + fecTerLic +
+                ", monLic='" + monLic + '\'' +
+                ", verSeaLic=" + verSeaLic +
+                ", estLic=" + estLic +
+                ", codEnt=" + codEnt +
+                ", codCat=" + codCat +
+                ", desEnt='" + desEnt + '\'' +
+                ", desCat='" + desCat + '\'' +
+                '}';
+    }
 }

@@ -207,14 +207,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         String ruc = mEmailView.getText().toString();
         String claUsu = mPasswordView.getText().toString();
-        obtenerCliente(ruc,claUsu);
+        procesarAcceso(ruc,claUsu);
 
 
 
 
     }
 
-    public void obtenerCliente(String ruc, String claUsu){
+    public void procesarAcceso(String ruc, String claUsu){
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(getResources().getString(R.string.url_base))
@@ -236,8 +236,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                             Intent objIntent = new Intent(getBaseContext(),ListaLicitacionActivity.class);
                             objIntent.putExtra("cliente", cliente);
-                            //objIntent.putExtra("ruc", ruc);
-                            //objIntent.putExtra("claUsu",claUsu);
                             startActivity(objIntent);
 
                         break;
