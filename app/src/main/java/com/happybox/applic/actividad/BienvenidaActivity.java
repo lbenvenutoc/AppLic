@@ -1,4 +1,4 @@
-package com.happybox.applic.actividades;
+package com.happybox.applic.actividad;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +16,7 @@ public class BienvenidaActivity extends AppCompatActivity {
     }
 
     public void mostrarRegistro(View view) {
-        Intent objIntent = new Intent(this, RegistroActivity.class);
+        Intent objIntent = new Intent(this, LoginActivity.class);
         startActivity(objIntent);
     }
 }

@@ -1,6 +1,7 @@
 package com.happybox.applic.endpoint;
 
 import com.happybox.applic.modelo.Cliente;
+import com.happybox.applic.modelo.Licitacion;
 
 import java.util.List;
 
@@ -12,10 +13,10 @@ import retrofit2.http.Path;
  * Created by USUARIO on 14/11/2016.
  */
 
-public interface ClienteEndPoint {
+public interface LicitacionEndPoint {
 
-    @GET("agenda/clientes/{ruc}/{claUsu}")
-    Call<Cliente> getCliente(@Path("ruc") String ruc,@Path("claUsu")  String claUsu);
 
+    @GET("agenda/licitaciones/{codCat}")
+    Call<List<Licitacion>> getLicitaciones(@Path("codCat") int codCat);
 
 }

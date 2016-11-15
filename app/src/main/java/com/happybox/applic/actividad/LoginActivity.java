@@ -1,4 +1,4 @@
-package com.happybox.applic.actividades;
+package com.happybox.applic.actividad;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -19,6 +19,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,11 +29,21 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.happybox.applic.R;
+import com.happybox.applic.endpoint.ClienteEndPoint;
+import com.happybox.applic.endpoint.LicitacionEndPoint;
+import com.happybox.applic.modelo.Cliente;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -194,13 +205,56 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
         */
 
-
         String ruc = mEmailView.getText().toString();
         String claUsu = mPasswordView.getText().toString();
-        Intent objIntent = new Intent(this, ListaLicitacionActivity.class);
-        objIntent.putExtra("ruc", ruc);
-        objIntent.putExtra("claUsu",claUsu);
-        startActivity(objIntent);
+        obtenerCliente(ruc,claUsu);
+
+
+
+
+    }
+
+    public void obtenerCliente(String ruc, String claUsu){
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(getResources().getString(R.string.url_base))
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ClienteEndPoint restCliente=retrofit.create(ClienteEndPoint.class);
+
+        Call<Cliente> call = restCliente.getCliente(ruc,claUsu);
+
+        call.enqueue(new Callback<Cliente>() {
+            @Override
+            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+                Log.i("response status", ""+response.code());
+                switch (response.code()) {
+                    case 200:
+                        Cliente cliente = null;
+                        cliente=response.body();
+
+                            Intent objIntent = new Intent(getBaseContext(),ListaLicitacionActivity.class);
+                            objIntent.putExtra("cliente", cliente);
+                            //objIntent.putExtra("ruc", ruc);
+                            //objIntent.putExtra("claUsu",claUsu);
+                            startActivity(objIntent);
+
+                        break;
+                    case 401:
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Cliente> call, Throwable t) {
+                Log.e("error", t.toString());
+            }
+        });
+
     }
 
     private boolean isEmailValid(String email) {
