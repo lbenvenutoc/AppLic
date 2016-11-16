@@ -118,14 +118,31 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 >
-                <android.support.v7.widget.AppCompatRadioButton
-                android:layout_width="wrap_content" android:text="Si"
-                android:layout_height="wrap_content" />
 
-                <android.support.v7.widget.AppCompatRadioButton
-                android:layout_width="wrap_content" android:text="No"
-                android:layout_height="wrap_content" />
+
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/radio_si"
+                    android:layout_height="wrap_content"
+                    android:text="Si"
+                    android:onClick="mostrarPago"/>
+
+                <RadioButton
+                    android:id="@+id/radio_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:onClick="mostrarPago"/>
+
             </LinearLayout>
+
+            <LinearLayout android:id="@+id/linear_pago"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                >
 
 
             <TextView
@@ -160,6 +177,8 @@
                 android:digits="1234567890"
                 android:inputType="number"
                 />
+
+                </LinearLayout>
 
             <Button
                 android:layout_width="match_parent"

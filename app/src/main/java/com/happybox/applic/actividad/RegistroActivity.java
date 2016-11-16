@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import com.happybox.applic.R;
@@ -29,6 +31,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegistroActivity extends AppCompatActivity {
 
     RecyclerView categoriaRecyclerView;
+    LinearLayout linear_pago;
+    RadioButton radio_si;
+    RadioButton radio_no;
     Spinner cboTipoTarjeta;
     CategoriaAdapter categoriaAdapter;
     LinearLayoutManager categoriaLayoutManager;
@@ -38,8 +43,13 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
         cboTipoTarjeta=(Spinner)findViewById(R.id.cboTipoTarjeta);
         categoriaRecyclerView = (RecyclerView) findViewById(R.id.categoriaRecyclerView);
+        linear_pago=(LinearLayout) findViewById(R.id.linear_pago);
+        radio_si=(RadioButton) findViewById(R.id.radio_si);
+        radio_si.setChecked(true);
+        radio_no=(RadioButton) findViewById(R.id.radio_no);
 
         categoriaLayoutManager = new LinearLayoutManager(this);
         categoriaRecyclerView.setLayoutManager(categoriaLayoutManager);
@@ -91,6 +101,34 @@ public class RegistroActivity extends AppCompatActivity {
                 Log.e("error", t.toString());
             }
         });
+
+
+    }
+
+    public void mostrarPago(View view) {
+
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.radio_si:
+                if (checked){
+                    linear_pago.setVisibility(View.VISIBLE);
+                    radio_no.setChecked(false);
+                }else{
+                    linear_pago.setVisibility(View.GONE);
+                }
+
+                    break;
+            case R.id.radio_no:
+                if (checked){
+                    linear_pago.setVisibility(View.GONE);
+                    radio_si.setChecked(false);
+                }else{
+                    linear_pago.setVisibility(View.VISIBLE);
+                }
+
+                    break;
+        }
 
 
     }
