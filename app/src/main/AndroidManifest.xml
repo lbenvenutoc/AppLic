@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".actividad.LoginActivity" />
         <activity android:name=".actividad.ListaLicitacionActivity"></activity>
-
+        <activity android:name=".actividad.RegistroActivity"></activity>
 
     </application>
 

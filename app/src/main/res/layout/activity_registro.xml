@@ -85,6 +85,8 @@
                 android:text="Seleccione las categorias que se ajustan a su empresa"
                 />
 
+            <!--
+
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:text="Bien"/>
@@ -97,6 +99,12 @@
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:text="Servicio"/>
+            -->
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/categoriaRecyclerView"/>
 
             <TextView
                 android:id="@+id/lblAbono"

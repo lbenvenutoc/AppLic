@@ -72,6 +72,27 @@
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿No tiene cuenta?, click aquí "/>
+
+            <Button
+                android:id="@+id/btnRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:onClick="mostrarRegistro"
+                android:text="Registro"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
