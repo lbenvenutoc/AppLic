@@ -22,9 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".actividad.LoginActivity" />
-        <activity android:name=".actividad.ListaLicitacionActivity"></activity>
-        <activity android:name=".actividad.RegistroActivity"></activity>
-
+        <activity android:name=".actividad.ListaLicitacionActivity" />
+        <activity android:name=".actividad.RegistroActivity" />
+        <activity android:name=".actividad.LicitacionActivity"></activity>
     </application>
 
 </manifest>

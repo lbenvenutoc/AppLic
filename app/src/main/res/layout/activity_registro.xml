@@ -64,6 +64,21 @@
                 />
 
             <TextView
+                android:id="@+id/lblCorreo"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Correo:"
+                />
+
+            <EditText
+                android:id="@+id/txtCorreo"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:ems="8"
+
+                />
+
+            <TextView
                 android:id="@+id/lblClave"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -85,21 +100,7 @@
                 android:text="Seleccione las categorias que se ajustan a su empresa"
                 />
 
-            <!--
 
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:text="Bien"/>
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:text="Consultoria"/>
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:text="Obra"/>
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:text="Servicio"/>
-            -->
 
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"

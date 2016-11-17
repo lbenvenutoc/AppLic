@@ -82,6 +82,8 @@
                 android:layout_height="wrap_content"
                 android:text="¿No tiene cuenta?, click aquí "/>
 
+            
+
             <Button
                 android:id="@+id/btnRegistro"
                 android:layout_width="match_parent"

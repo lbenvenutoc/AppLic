@@ -11,6 +11,7 @@ public class Categoria implements Serializable{
     private int codCat;
     private String desCat;
     private int estSus;
+    private boolean estaSeleccionado;
 
     public int getCodCat() {
         return codCat;
@@ -34,5 +35,13 @@ public class Categoria implements Serializable{
 
     public void setEstSus(int estSus) {
         this.estSus = estSus;
+    }
+
+    public boolean getEstaSeleccionado() {
+        return estaSeleccionado;
+    }
+
+    public void setEstaSeleccionado(boolean estaSeleccionado) {
+        this.estaSeleccionado = estaSeleccionado;
     }
 }

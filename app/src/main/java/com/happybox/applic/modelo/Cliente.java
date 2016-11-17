@@ -1,6 +1,7 @@
 package com.happybox.applic.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  */
 
 public class Cliente implements Serializable{
+
 
     private int codCli;
     private String rucCli;
