@@ -9,31 +9,158 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         >
 
         <TextView
-            android:id="@+id/lblTituloLicitacion"
             android:text="Licitacion Seleccionada"
             android:textSize="20dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             />
 
-        <LinearLayout
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         >
 
         <TextView
-            android:id="@+id/lblVistaRazSoc"
+            android:text="Informacion General"
+            android:textSize="20dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             />
 
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+        >
+
+            <TextView
+                android:id="@+id/lblNomenclatura"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/lblNormativaAplicable"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/lblVersionSeace"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/lblIdentificador"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+
+
+
+            <TextView
+                android:id="@+id/lblVistaRazSoc"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+            />
+
         </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            >
+
+            <TextView
+                android:text="Informacion de la Entidad"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/lblEntidadConvocante"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    />
+
+                <TextView
+                    android:id="@+id/lblDireccion"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            >
+
+            <TextView
+                android:text="Informacion General del Procxedimiento"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/lblCategoria"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    />
+
+                <TextView
+                    android:id="@+id/lblResumen"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    />
+
+                <TextView
+                    android:id="@+id/lblMonto"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    />
+
+                <TextView
+                    android:id="@+id/lblFechaPublicacion"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    />
+
+                <TextView
+                    android:id="@+id/lblFechaCierre"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

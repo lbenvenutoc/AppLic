@@ -23,7 +23,16 @@ public class Licitacion implements Serializable{
     private int codCat;
 
     private String desEnt;
+    private String dirEnt;
     private String desCat;
+
+    public String getDirEnt() {
+        return dirEnt;
+    }
+
+    public void setDirEnt(String dirEnt) {
+        this.dirEnt = dirEnt;
+    }
 
     public int getCodLic() {
         return codLic;
