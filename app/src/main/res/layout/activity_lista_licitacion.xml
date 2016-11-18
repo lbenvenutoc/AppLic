@@ -16,7 +16,12 @@
         <TextView
             android:id="@+id/lblCliente"
             android:text="Cliente"
+            android:textAlignment="center"
             android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
+        <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             />
@@ -27,12 +32,6 @@
         android:orientation="vertical"
         >
 
-        <TextView
-            android:id="@+id/lblUsuario"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="Usuario:"
-            />
 
         <TextView
             android:id="@+id/lblUsuarioDes"
@@ -40,12 +39,6 @@
             android:layout_width="match_parent"
             />
 
-        <TextView
-            android:id="@+id/lblStatus"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="Estatus:"
-            />
 
         <TextView
             android:id="@+id/lblStatusDes"
@@ -53,12 +46,22 @@
             android:layout_width="match_parent"
             />
 
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
 
-
+        <TextView
+            android:text="Lista de Licitaciones"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/licitacionRecyclerView"/>
 
 

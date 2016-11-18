@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -15,12 +16,11 @@ import android.widget.Toast;
 
 import com.happybox.applic.R;
 import com.happybox.applic.adaptador.CategoriaAdapter;
-import com.happybox.applic.adaptador.LicitacionAdapter;
 import com.happybox.applic.endpoint.CategoriaEndPoint;
 import com.happybox.applic.endpoint.ClienteEndPoint;
 import com.happybox.applic.modelo.Categoria;
 import com.happybox.applic.modelo.Cliente;
-import com.happybox.applic.modelo.Licitacion;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,34 +76,85 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
+    public boolean validarSeleccionCategorias(List<Categoria> lstCat) {
+        boolean resultado=true;
+
+        for(Categoria cat:lstCat){
+            if(cat.getEstaSeleccionado()){
+                resultado=false;
+                break;
+            }
+        }
+
+        return resultado;
+    }
+
     public void registrarCliente(View view) {
 
-        Cliente cliente= new Cliente();
-        cliente.setRucCli(txtRuc.getText().toString());
-        cliente.setPasCli(txtPassword.getText().toString());
-        cliente.setCorCli(txtCorreo.getText().toString());
-        cliente.setRazSocCli(txtRazonSocial.getText().toString());
-        cliente.setNumTarCli(txtNumTarjeta.getText().toString());
-        cliente.setTipTarCli(cboTipoTarjeta.getSelectedItem().toString());
+        boolean cancel = false;
+        View focusView = null;
 
-        cliente.setLstCat(lstCategoriasTotales);
+        String rucCli=txtRuc.getText().toString();
+        String pasCli=txtPassword.getText().toString();
+        String corCli=txtCorreo.getText().toString();
+        String razSocCli=txtRazonSocial.getText().toString();
+        String numTarCli=txtNumTarjeta.getText().toString();
+        String tipTarCli=cboTipoTarjeta.getSelectedItem().toString();
 
-        /*
-        for(Categoria c:lstCategoriasTotales){
+        txtRuc.setError(null);
+        txtRazonSocial.setError(null);
+        txtCorreo.setError(null);
+        txtPassword.setError(null);
 
-            Toast.makeText(
-                    this,
-                    c.getCodCat()+" - "+c.getDesCat()+" "+c.getEstaSeleccionado()
-                          , Toast.LENGTH_SHORT).show();
+        if(TextUtils.isEmpty(rucCli)){
+            txtRuc.setError("Ruc es requerido");
+            focusView = txtRuc;
+            cancel = true;
         }
-        */
+        else if(rucCli.length()<11){
+            txtRuc.setError("Ruc debe tener 11 dígitos");
+            focusView = txtRuc;
+            cancel = true;
+        }
+        else if(TextUtils.isEmpty(razSocCli)){
+            txtRazonSocial.setError("Razón Social es requerida");
+            focusView = txtRazonSocial;
+            cancel = true;
+        }else if(TextUtils.isEmpty(corCli)){
+            txtCorreo.setError("Correo es requerido");
+            focusView = txtCorreo;
+            cancel = true;
+        }else if(!corCli.contains("@")){
+            txtCorreo.setError("Correo es inválido");
+            focusView = txtCorreo;
+            cancel = true;
+        }
+        else if(TextUtils.isEmpty(pasCli)){
+            txtPassword.setError("Clave es requerida");
+            focusView = txtPassword;
+            cancel = true;
+        }
 
+        if(cancel){
+            focusView.requestFocus();
+        }else{
+            if(validarSeleccionCategorias(lstCategoriasTotales)){
+                Toast.makeText(getBaseContext(), "Debe seleccionar al menos una categoria",
+                        Toast.LENGTH_SHORT).show();
+            }else{
+                Cliente cliente= new Cliente();
+                cliente.setRucCli(rucCli);
+                cliente.setPasCli(pasCli);
+                cliente.setCorCli(corCli);
+                cliente.setRazSocCli(razSocCli);
+                cliente.setNumTarCli(numTarCli);
+                cliente.setTipTarCli(tipTarCli);
+                cliente.setLstCat(lstCategoriasTotales);
+                procesarRegistroCliente(cliente);
 
-        procesarRegistroCliente(cliente);
+            }
 
-
-
-
+        }
 
     }
 

@@ -14,7 +14,6 @@ public class LicitacionActivity extends AppCompatActivity {
     TextView lblNomenclatura;
     TextView lblNormativaAplicable;
     TextView lblVersionSeace;
-    TextView lblVistaRazSoc;
     TextView lblEntidadConvocante;
     TextView lblDireccion;
     TextView lblCategoria;
@@ -27,11 +26,10 @@ public class LicitacionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_licitacion);
-        lblIdetificador=(TextView) findViewById(R.id.lblVistaRazSoc);
+        lblIdetificador=(TextView) findViewById(R.id.lblIdetificador);
         lblNomenclatura=(TextView) findViewById(R.id.lblNomenclatura);
         lblNormativaAplicable=(TextView) findViewById(R.id.lblNormativaAplicable);
         lblVersionSeace=(TextView) findViewById(R.id.lblVersionSeace);
-        lblVistaRazSoc=(TextView) findViewById(R.id.lblVistaRazSoc);
         lblEntidadConvocante=(TextView) findViewById(R.id.lblEntidadConvocante);
         lblDireccion=(TextView) findViewById(R.id.lblDireccion);
         lblCategoria=(TextView) findViewById(R.id.lblCategoria);
@@ -47,7 +45,7 @@ public class LicitacionActivity extends AppCompatActivity {
         lblNomenclatura.setText("Nomenclatura: "+licitacion.getNomLic());
         lblNormativaAplicable.setText("Normativa Aplicable: "+licitacion.getNorAplLic());
         lblVersionSeace.setText("Version SEACE: "+licitacion.getVerSeaLic());
-        lblVistaRazSoc.setText("Entidad convocante: "+licitacion.getDesEnt());
+        lblEntidadConvocante.setText("Entidad convocante: "+licitacion.getDesEnt());
         lblDireccion.setText("Direccion legal: "+licitacion.getDirEnt());
         lblCategoria.setText("Categoría: "+licitacion.getDesCat());
         lblResumen.setText("Resumen: "+licitacion.getDesLic());

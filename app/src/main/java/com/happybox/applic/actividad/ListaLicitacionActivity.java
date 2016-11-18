@@ -7,19 +7,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.happybox.applic.R;
 import com.happybox.applic.adaptador.LicitacionAdapter;
-import com.happybox.applic.endpoint.ClienteEndPoint;
 import com.happybox.applic.endpoint.LicitacionEndPoint;
 import com.happybox.applic.modelo.Categoria;
 import com.happybox.applic.modelo.Cliente;
 import com.happybox.applic.modelo.Licitacion;
-
-
-import java.security.AccessController;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,8 +43,8 @@ public class ListaLicitacionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Cliente cliente = (Cliente) intent.getExtras().getSerializable("cliente");
-        lblUsuarioDes.setText(cliente.getRucCli()+" - "+cliente.getRazSocCli());
-        lblStatusDes.setText(cliente.getFlgAboCli()==0?"Normal":"VIP");
+        lblUsuarioDes.setText("Usuario: "+cliente.getRucCli()+" - "+cliente.getRazSocCli());
+        lblStatusDes.setText(cliente.getFlgAboCli()==0?"Estatus: Normal":"Estatus: VIP");
 
         licitacionLayoutManager = new LinearLayoutManager(this);
         licitacionRecyclerView.setLayoutManager(licitacionLayoutManager);

@@ -16,6 +16,11 @@
         <TextView
             android:text="Licitacion Seleccionada"
             android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
+        <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             />
@@ -58,15 +63,12 @@
                 />
 
             <TextView
-                android:id="@+id/lblIdentificador"
+                android:id="@+id/lblIdetificador"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 />
 
-
-
             <TextView
-                android:id="@+id/lblVistaRazSoc"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
             />
@@ -103,6 +105,12 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+
+
             </LinearLayout>
 
         </LinearLayout>

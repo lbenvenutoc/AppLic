@@ -14,17 +14,20 @@ public class Licitacion implements Serializable{
     private String desLic;
     private String norAplLic;
     private double valRef;
-    private Date fecPubLic;
-    private Date fecTerLic;
+    private String fecPubLic;
+    private String fecTerLic;
     private String monLic;
     private int verSeaLic;
     private int estLic;
-    private int codEnt;
-    private int codCat;
 
+    private int codCat;
+    private String desCat;
+
+    //DATOS ENTIDAD
+    private int codEnt;
     private String desEnt;
     private String dirEnt;
-    private String desCat;
+
 
     public String getDirEnt() {
         return dirEnt;
@@ -74,19 +77,19 @@ public class Licitacion implements Serializable{
         this.valRef = valRef;
     }
 
-    public Date getFecPubLic() {
+    public String getFecPubLic() {
         return fecPubLic;
     }
 
-    public void setFecPubLic(Date fecPubLic) {
+    public void setFecPubLic(String fecPubLic) {
         this.fecPubLic = fecPubLic;
     }
 
-    public Date getFecTerLic() {
+    public String getFecTerLic() {
         return fecTerLic;
     }
 
-    public void setFecTerLic(Date fecTerLic) {
+    public void setFecTerLic(String fecTerLic) {
         this.fecTerLic = fecTerLic;
     }
 
