@@ -4,6 +4,8 @@
     android:id="@+id/activity_bienvenida2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     android:layout_gravity="center"
     tools:context="com.happybox.applic.actividad.BienvenidaActivity"
     android:orientation="vertical">

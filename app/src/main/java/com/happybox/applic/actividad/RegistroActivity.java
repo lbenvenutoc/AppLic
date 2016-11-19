@@ -171,12 +171,12 @@ public class RegistroActivity extends AppCompatActivity {
                 Log.i("informacion post", ""+response.code());
                 switch (response.code()) {
                     case 200:
-                        Cliente data=response.body();
-                        Toast.makeText(getBaseContext(), "El cliente con ruc "+data.getRucCli()+" se registro correctamente",
-                                Toast.LENGTH_LONG).show();
 
-                        Intent objIntent = new Intent(getBaseContext(), LoginActivity.class);
-                        startActivity(objIntent);
+                         Cliente data=response.body();
+                         Toast.makeText(getBaseContext(), "El cliente con ruc "+data.getRucCli()+" se registro correctamente",
+                            Toast.LENGTH_SHORT).show();
+                          Intent objIntent = new Intent(getBaseContext(), LoginActivity.class);
+                          startActivity(objIntent);
 
                         break;
                     case 401:

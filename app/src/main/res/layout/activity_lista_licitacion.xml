@@ -5,6 +5,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context="com.happybox.applic.actividad.RegistroActivity"
     android:orientation="vertical" >
 
@@ -13,6 +15,12 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         >
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
+
         <TextView
             android:id="@+id/lblCliente"
             android:text="Cliente"
@@ -55,6 +63,11 @@
             android:text="Lista de Licitaciones"
             android:textAlignment="center"
             android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
+
+        <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             />

@@ -11,6 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.happybox.applic.R;
 import com.happybox.applic.endpoint.ClienteEndPoint;
 import com.happybox.applic.modelo.Cliente;
@@ -112,12 +114,10 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i("response status", ""+response.code());
                 switch (response.code()) {
                     case 200:
-                        Cliente cliente = null;
-                        cliente=response.body();
-
-                            Intent objIntent = new Intent(getBaseContext(),ListaLicitacionActivity.class);
-                            objIntent.putExtra("cliente", cliente);
-                            startActivity(objIntent);
+                        Cliente cliente = response.body();
+                        Intent objIntent = new Intent(getBaseContext(),ListaLicitacionActivity.class);
+                        objIntent.putExtra("cliente", cliente);
+                        startActivity(objIntent);
 
                         break;
                     case 401:
@@ -130,7 +130,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Cliente> call, Throwable t) {
-                Log.e("error", t.toString());
+                Toast.makeText(getBaseContext(), "Usuario y/o clave incorrectos",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
