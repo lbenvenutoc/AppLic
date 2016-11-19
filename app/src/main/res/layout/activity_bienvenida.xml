@@ -19,7 +19,8 @@
 
    <Button
        android:layout_width="match_parent"
-       android:layout_height="match_parent" android:text="Continuar"
+       style="@style/Theme.AppLic.boton"
+       android:layout_height="match_parent" android:text="CONTINUAR"
        android:onClick="mostrarRegistro"/>
 
 </LinearLayout>

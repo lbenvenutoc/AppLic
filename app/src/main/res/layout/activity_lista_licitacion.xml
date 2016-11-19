@@ -22,12 +22,10 @@
             />
 
         <TextView
+            android:text="CLIENTE"
+            style="@style/Theme.AppLic.titulo"
             android:id="@+id/lblCliente"
-            android:text="Cliente"
             android:textAlignment="center"
-            android:textSize="20dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -60,11 +58,9 @@
             />
 
         <TextView
-            android:text="Lista de Licitaciones"
+            android:text="LISTA DE LICITACIONES"
             android:textAlignment="center"
-            android:textSize="20dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            style="@style/Theme.AppLic.titulo"
             />
 
         <TextView

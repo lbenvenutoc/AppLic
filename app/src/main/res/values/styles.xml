@@ -24,8 +24,6 @@
 
     <style name="AppTheme" parent="Theme.AppLic">
 
-
-
     </style>
 
     <style name="Theme.AppLic" parent="Theme.AppCompat">
@@ -34,6 +32,30 @@
         <item name="colorAccent">#689F38</item>
         <item name="android:windowBackground">@color/back_color</item>
         <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">15dp</item>
+
+    </style>
+
+    <style name="Theme.AppLic.boton" parent="Theme.AppLic">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#8BC34A</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="Theme.AppLic.titulo" parent="Theme.AppLic">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#8BC34A</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">20dp</item>
     </style>
 
 </resources>
