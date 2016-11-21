@@ -15,7 +15,7 @@ import retrofit2.http.Path;
 
 public interface CategoriaEndPoint {
 
-    @GET("agenda/categorias")
+    @GET("categorias")
     Call<List<Categoria>> getCategorias();
 
 

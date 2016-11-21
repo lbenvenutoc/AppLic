@@ -16,10 +16,10 @@ import retrofit2.http.Path;
 
 public interface ClienteEndPoint {
 
-    @GET("agenda/clientes/{ruc}/{claUsu}")
+    @GET("clientes/{ruc}/{claUsu}")
     Call<Cliente> getCliente(@Path("ruc") String ruc,@Path("claUsu")  String claUsu);
 
-    @POST("agenda/clientes/nuevo")
+    @POST("clientes/nuevo")
     Call<Cliente> insertarCliente(@Body Cliente cliente);
 
 

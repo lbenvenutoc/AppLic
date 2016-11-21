@@ -16,7 +16,7 @@ import retrofit2.http.Path;
 public interface LicitacionEndPoint {
 
 
-    @GET("agenda/licitaciones/{codCat}")
+    @GET("licitaciones/{codCat}")
     Call<List<Licitacion>> getLicitaciones(@Path("codCat") int codCat);
 
 }
