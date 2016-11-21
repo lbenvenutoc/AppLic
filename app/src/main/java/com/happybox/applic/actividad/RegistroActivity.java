@@ -149,6 +149,11 @@ public class RegistroActivity extends AppCompatActivity {
                 cliente.setRazSocCli(razSocCli);
                 cliente.setNumTarCli(numTarCli);
                 cliente.setTipTarCli(tipTarCli);
+                if(radio_si.isChecked()){
+                    cliente.setFlgAboCli(1);
+                }else{
+                    cliente.setFlgAboCli(0);
+                }
                 cliente.setLstCat(lstCategoriasTotales);
                 procesarRegistroCliente(cliente);
 

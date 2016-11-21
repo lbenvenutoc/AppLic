@@ -127,7 +127,7 @@
             >
 
             <TextView
-                android:text="Informacion General del Procxedimiento"
+                android:text="Informacion General del Procedimiento"
                 android:textSize="20dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
