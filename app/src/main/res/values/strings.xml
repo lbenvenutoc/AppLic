@@ -17,7 +17,7 @@
     </string>
 
     <!--URL RESTFul-->
-    <string name="url_base">http://10.0.2.2:8090/apiRest/</string>
+    <string name="url_base">http://10.0.2.2:8090/api-rest-lic/</string>
 
 
 
