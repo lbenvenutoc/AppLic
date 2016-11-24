@@ -177,11 +177,17 @@ public class RegistroActivity extends AppCompatActivity {
                 switch (response.code()) {
                     case 200:
 
-                         Cliente data=response.body();
-                         Toast.makeText(getBaseContext(), "El cliente con ruc "+data.getRucCli()+" se registro correctamente",
-                            Toast.LENGTH_SHORT).show();
-                          Intent objIntent = new Intent(getBaseContext(), LoginActivity.class);
-                          startActivity(objIntent);
+                         Cliente clienteResultado=response.body();
+                         if(clienteResultado.getCodCli()==-2){
+                             Toast.makeText(getBaseContext(), "El cliente con RUC "+clienteResultado.getRucCli()+" ya se encuentra registrado",
+                                     Toast.LENGTH_SHORT).show();
+                         }else{
+                             Toast.makeText(getBaseContext(), "El cliente con RUC "+clienteResultado.getRucCli()+" se registró correctamente",
+                                     Toast.LENGTH_SHORT).show();
+                             Intent objIntent = new Intent(getBaseContext(), LoginActivity.class);
+                             startActivity(objIntent);
+                         }
+
 
                         break;
                     case 401:
@@ -196,7 +202,8 @@ public class RegistroActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Cliente> call, Throwable t) {
-
+                Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -233,7 +240,8 @@ public class RegistroActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Categoria>> call, Throwable t) {
-                Log.e("error", t.toString());
+                Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 

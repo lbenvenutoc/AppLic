@@ -115,9 +115,15 @@ public class LoginActivity extends AppCompatActivity {
                 switch (response.code()) {
                     case 200:
                         Cliente cliente = response.body();
-                        Intent objIntent = new Intent(getBaseContext(),ListaLicitacionActivity.class);
-                        objIntent.putExtra("cliente", cliente);
-                        startActivity(objIntent);
+                        if(cliente.getCodCli()==-1){
+                            Toast.makeText(getBaseContext(), "Usuario y/o clave incorrectos",
+                                    Toast.LENGTH_SHORT).show();
+                        }else{
+                            Intent objIntent = new Intent(getBaseContext(),ListaLicitacionActivity.class);
+                            objIntent.putExtra("cliente", cliente);
+                            startActivity(objIntent);
+                        }
+
 
                         break;
                     case 401:
@@ -130,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Cliente> call, Throwable t) {
-                Toast.makeText(getBaseContext(), "Usuario y/o clave incorrectos",
+                Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
                         Toast.LENGTH_SHORT).show();
             }
         });

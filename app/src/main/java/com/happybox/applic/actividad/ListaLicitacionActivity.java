@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.happybox.applic.R;
@@ -86,7 +87,8 @@ public class ListaLicitacionActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<List<Licitacion>> call, Throwable t) {
-                    Log.e("error", t.toString());
+                    Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
+                            Toast.LENGTH_SHORT).show();
                 }
             });
         }
