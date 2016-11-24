@@ -33,7 +33,7 @@ public class ListaLicitacionActivity extends AppCompatActivity {
     LicitacionAdapter licitacionAdapter;
     LinearLayoutManager licitacionLayoutManager;
     List<Licitacion> lstLicitacionesTotales= new ArrayList<Licitacion>();
-
+    int flgEstatusCliente=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +46,7 @@ public class ListaLicitacionActivity extends AppCompatActivity {
         Cliente cliente = (Cliente) intent.getExtras().getSerializable("cliente");
         lblUsuarioDes.setText("Usuario: "+cliente.getRucCli()+" - "+cliente.getRazSocCli());
         lblStatusDes.setText(cliente.getFlgAboCli()==0?"Estatus: Normal":"Estatus: VIP");
-
+        flgEstatusCliente=cliente.getFlgAboCli();
         licitacionLayoutManager = new LinearLayoutManager(this);
         licitacionRecyclerView.setLayoutManager(licitacionLayoutManager);
         procesarLicitaciones(cliente.getLstCat());
@@ -60,7 +60,7 @@ public class ListaLicitacionActivity extends AppCompatActivity {
                 .build();
         LicitacionEndPoint restLicitacion=retrofit.create(LicitacionEndPoint.class);
         for(Categoria cat:lstCategorias){
-            Call<List<Licitacion>> callList = restLicitacion.getLicitaciones(cat.getCodCat());
+            Call<List<Licitacion>> callList = restLicitacion.getLicitaciones(cat.getCodCat(), flgEstatusCliente);
 
             callList.enqueue(new Callback<List<Licitacion>>() {
                 @Override
