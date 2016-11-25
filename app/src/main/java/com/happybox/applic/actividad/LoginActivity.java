@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
@@ -13,14 +12,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.ParsedRequestListener;
+import com.google.gson.reflect.TypeToken;
 import com.happybox.applic.R;
-import com.happybox.applic.endpoint.ClienteEndPoint;
 import com.happybox.applic.modelo.Cliente;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -99,22 +98,15 @@ public class LoginActivity extends AppCompatActivity {
 
     public void procesarAcceso(String ruc, String claUsu){
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(getResources().getString(R.string.url_base))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ClienteEndPoint restCliente=retrofit.create(ClienteEndPoint.class);
-
-        Call<Cliente> call = restCliente.getCliente(ruc,claUsu);
-
-        call.enqueue(new Callback<Cliente>() {
-            @Override
-            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
-                Log.i("response status", ""+response.code());
-                switch (response.code()) {
-                    case 200:
-                        Cliente cliente = response.body();
+        AndroidNetworking.get(getResources().getString(R.string.url_base)+getResources().getString(R.string.url_obtiene_cliente))
+                .addPathParameter("ruc", ruc)
+                .addPathParameter("claUsu", claUsu)
+                .setTag(this)
+                .setPriority(Priority.LOW)
+                .build()
+                .getAsParsed(new TypeToken<Cliente>(){}, new ParsedRequestListener<Cliente>() {
+                    @Override
+                    public void onResponse(Cliente cliente) {
                         if(cliente.getCodCli()==-1){
                             Toast.makeText(getBaseContext(), "Usuario y/o clave incorrectos",
                                     Toast.LENGTH_SHORT).show();
@@ -123,23 +115,15 @@ public class LoginActivity extends AppCompatActivity {
                             objIntent.putExtra("cliente", cliente);
                             startActivity(objIntent);
                         }
+                    }
 
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
+                                Toast.LENGTH_SHORT).show();
+                    }
 
-                        break;
-                    case 401:
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<Cliente> call, Throwable t) {
-                Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+                });
 
     }
 

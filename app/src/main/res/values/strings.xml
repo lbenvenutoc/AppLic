@@ -16,13 +16,18 @@
         completions."
     </string>
 
-    <!--URL RESTFul-->
+    <!--URL BASE RESTFul-->
     <string name="url_base">http://10.0.2.2:8090/api-rest-lic/</string>
 
+    <!--URL CLIENTE-->
+    <string name="url_obtiene_cliente">clientes/{ruc}/{claUsu}</string>
+    <string name="url_nuevo_cliente">clientes/nuevo</string>
 
+    <!--URL CATEGORIA-->
+    <string name="url_lista_categorias">categorias</string>
 
-
-
+    <!--URL LICITACIONES-->
+    <string name="url_lista_licitaciones">licitaciones/{codCat}/{flgAboCli}</string>
 
 
 </resources>

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -14,22 +13,18 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.ParsedRequestListener;
+import com.google.gson.reflect.TypeToken;
 import com.happybox.applic.R;
 import com.happybox.applic.adaptador.CategoriaAdapter;
-import com.happybox.applic.endpoint.CategoriaEndPoint;
-import com.happybox.applic.endpoint.ClienteEndPoint;
 import com.happybox.applic.modelo.Categoria;
 import com.happybox.applic.modelo.Cliente;
-
-
+import com.happybox.applic.utilitario.Utilitario;
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class RegistroActivity extends AppCompatActivity {
@@ -164,86 +159,61 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     public void procesarRegistroCliente(Cliente cliente){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(getResources().getString(R.string.url_base))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        ClienteEndPoint restCliente=retrofit.create(ClienteEndPoint.class);
-        Call<Cliente> call = restCliente.insertarCliente(cliente);
-        call.enqueue(new Callback<Cliente>() {
-            @Override
-            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
-                Log.i("informacion post", ""+response.code());
-                switch (response.code()) {
-                    case 200:
 
-                         Cliente clienteResultado=response.body();
-                         if(clienteResultado.getCodCli()==-2){
-                             Toast.makeText(getBaseContext(), "El cliente con RUC "+clienteResultado.getRucCli()+" ya se encuentra registrado",
-                                     Toast.LENGTH_SHORT).show();
-                         }else{
-                             Toast.makeText(getBaseContext(), "El cliente con RUC "+clienteResultado.getRucCli()+" se registró correctamente",
-                                     Toast.LENGTH_SHORT).show();
-                             Intent objIntent = new Intent(getBaseContext(), LoginActivity.class);
-                             startActivity(objIntent);
-                         }
+            AndroidNetworking.post(getResources().getString(R.string.url_base)+getResources().getString(R.string.url_nuevo_cliente))
+                    .addJSONObjectBody(Utilitario.convertirClaseaObjeto(cliente))
+                    .setTag(this)
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsParsed(new TypeToken<Cliente>(){}, new ParsedRequestListener<Cliente>() {
+                        @Override
+                        public void onResponse(Cliente cliente) {
+                            if(cliente.getCodCli()==-2){
+                                Toast.makeText(getBaseContext(), "El cliente con RUC "+cliente.getRucCli()+" ya se encuentra registrado",
+                                        Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(getBaseContext(), "El cliente con RUC "+cliente.getRucCli()+" se registró correctamente",
+                                        Toast.LENGTH_SHORT).show();
+                                Intent objIntent = new Intent(getBaseContext(), LoginActivity.class);
+                                startActivity(objIntent);
+                            }
+                        }
 
-
-                        break;
-                    case 401:
-                        break;
-                    default:
-                        break;
-                }
+                        @Override
+                        public void onError(ANError anError) {
+                            Toast.makeText(getBaseContext(), "Error al conectarse al API REST "+anError.getErrorDetail(),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
 
 
-            }
 
-            @Override
-            public void onFailure(Call<Cliente> call, Throwable t) {
-                Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 
     public void procesarCategorias(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(getResources().getString(R.string.url_base))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        CategoriaEndPoint restCategoria=retrofit.create(CategoriaEndPoint.class);
-
-        Call<List<Categoria>> callList = restCategoria.getCategorias();
-        callList.enqueue(new Callback<List<Categoria>>() {
-            @Override
-            public void onResponse(Call<List<Categoria>> call, Response<List<Categoria>> response) {
-
-                switch (response.code()) {
-                    case 200:
-                        List<Categoria> data=response.body();
-                        lstCategoriasTotales.addAll(data);
+        AndroidNetworking.get(getResources().getString(R.string.url_base)+getResources().getString(R.string.url_lista_categorias))
+                .setTag(this)
+                .setPriority(Priority.LOW)
+                .build()
+                .getAsParsed(new TypeToken<List<Categoria>>(){}, new ParsedRequestListener<List<Categoria>>() {
+                    @Override
+                    public void onResponse(List<Categoria> lstCategorias) {
+                        lstCategoriasTotales.addAll(lstCategorias);
                         categoriaAdapter = new CategoriaAdapter();
                         categoriaAdapter.setCategorias(lstCategoriasTotales);
                         categoriaRecyclerView.setAdapter(categoriaAdapter);
-                        break;
-                    case 401:
-                        break;
-                    default:
-                        break;
-                }
+                    }
 
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
+                                Toast.LENGTH_SHORT).show();
+                    }
 
-            }
-
-            @Override
-            public void onFailure(Call<List<Categoria>> call, Throwable t) {
-                Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+                });
 
 
     }

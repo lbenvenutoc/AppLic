@@ -5,25 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.ParsedRequestListener;
+import com.google.gson.reflect.TypeToken;
 import com.happybox.applic.R;
 import com.happybox.applic.adaptador.LicitacionAdapter;
-import com.happybox.applic.endpoint.LicitacionEndPoint;
 import com.happybox.applic.modelo.Categoria;
 import com.happybox.applic.modelo.Cliente;
 import com.happybox.applic.modelo.Licitacion;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ListaLicitacionActivity extends AppCompatActivity {
@@ -54,43 +52,30 @@ public class ListaLicitacionActivity extends AppCompatActivity {
     }
 
     public void procesarLicitaciones(List<Categoria>lstCategorias){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(getResources().getString(R.string.url_base))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        LicitacionEndPoint restLicitacion=retrofit.create(LicitacionEndPoint.class);
+
         for(Categoria cat:lstCategorias){
-            Call<List<Licitacion>> callList = restLicitacion.getLicitaciones(cat.getCodCat(), flgEstatusCliente);
-
-            callList.enqueue(new Callback<List<Licitacion>>() {
-                @Override
-                public void onResponse(Call<List<Licitacion>> call, Response<List<Licitacion>> response) {
-
-
-
-                    switch (response.code()) {
-                        case 200:
-                            List<Licitacion> data=response.body();
-                            lstLicitacionesTotales.addAll(data);
+            AndroidNetworking.get(getResources().getString(R.string.url_base)+getResources().getString(R.string.url_lista_licitaciones))
+                    .addPathParameter("codCat", ""+cat.getCodCat())
+                    .addPathParameter("flgAboCli", ""+flgEstatusCliente)
+                    .setTag(this)
+                    .setPriority(Priority.LOW)
+                    .build()
+                    .getAsParsed(new TypeToken<List<Licitacion>>(){}, new ParsedRequestListener<List<Licitacion>>() {
+                        @Override
+                        public void onResponse(List<Licitacion> lstLicitaciones) {
+                            lstLicitacionesTotales.addAll(lstLicitaciones);
                             licitacionAdapter = new LicitacionAdapter();
                             licitacionAdapter.setLicitaciones(lstLicitacionesTotales);
                             licitacionRecyclerView.setAdapter(licitacionAdapter);
-                            break;
-                        case 401:
-                            break;
-                        default:
-                            break;
-                    }
+                        }
 
+                        @Override
+                        public void onError(ANError anError) {
+                            Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
+                                    Toast.LENGTH_SHORT).show();
+                        }
 
-                }
-
-                @Override
-                public void onFailure(Call<List<Licitacion>> call, Throwable t) {
-                    Toast.makeText(getBaseContext(), "Error al conectarse al API REST",
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
+                    });
         }
 
 
