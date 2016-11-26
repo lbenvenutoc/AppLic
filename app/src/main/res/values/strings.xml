@@ -4,9 +4,8 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">RUC</string>
-    <string name="prompt_password">Clave</string>
-    <string name="action_sign_in">INGRESAR</string>
+
+
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -29,5 +28,39 @@
     <!--URL LICITACIONES-->
     <string name="url_lista_licitaciones">licitaciones/{codCat}/{flgAboCli}</string>
 
+    <!--FORMULARIO BIENVENIDA -->
+    <string name="texto_bienvenida">Bienvenidos al App de Licitaciones</string>
+    <string name="texto_boton_continuar">CONTINUAR</string>
+
+    <!--FORMULARIO ACCESO -->
+    <string name="texto_ruc">RUC</string>
+    <string name="texto_clave">Clave</string>
+    <string name="texto_boton_ingresar">INGRESAR</string>
+    <string name="texto_no_ingreso">¿No tiene cuenta?, click aquí </string>
+    <string name="texto_boton_registro">REGISTRO</string>
+
+    <!--FORMULARIO REGISTRO CLIENTE -->
+    <string name="texto_registro_titulo">REGISTRO</string>
+    <string name="texto_registro_ruc">RUC</string>
+    <string name="texto_registro_razon">Razón Social</string>
+    <string name="texto_registro_correo">Correo</string>
+    <string name="texto_registro_clave">Clave</string>
+    <string name="texto_seleccion_categorias">Seleccione las categorias que se ajustan a su empresa</string>
+    <string name="texto_abono">¿Desea abonar para una cuenta VIP?</string>
+    <string name="texto_radio_si">Si</string>
+    <string name="texto_radio_no">No</string>
+    <string name="texto_registro_tipo_tarjeta">Seleccione tipo de Tarjeta</string>
+    <string name="texto_registro_numero_tarjeta">Número de tarjeta</string>
+    <string name="texto_boton_terminar">TERMINAR</string>
+
+    <!--FORMULARIO LISTA LICITACIONES -->
+    <string name="texto_lista_titulo_cliente">CLIENTE</string>
+    <string name="texto_lista_titulo_licitacion">LISTA DE LICITACIONES</string>
+
+    <!--FORMULARIO LICITACION -->
+    <string name="texto_licitacion_titulo">LICITACION SELECCIONADA</string>
+    <string name="texto_licitacion_info">Informacion General</string>
+    <string name="texto_licitacion_entidad">Informacion de la Entidad</string>
+    <string name="texto_licitacion_procedimiento">Informacion General del Procedimiento</string>
 
 </resources>

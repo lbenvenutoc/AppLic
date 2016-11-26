@@ -22,9 +22,8 @@
             />
 
         <TextView
-            android:text="CLIENTE"
+            android:text="@string/texto_lista_titulo_cliente"
             style="@style/Theme.AppLic.titulo"
-            android:id="@+id/lblCliente"
             android:textAlignment="center"
             />
         <TextView
@@ -40,14 +39,14 @@
 
 
         <TextView
-            android:id="@+id/lblUsuarioDes"
+            android:id="@+id/clienteTextView"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             />
 
 
         <TextView
-            android:id="@+id/lblStatusDes"
+            android:id="@+id/estatusTextView"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             />
@@ -58,7 +57,7 @@
             />
 
         <TextView
-            android:text="LISTA DE LICITACIONES"
+            android:text="@string/texto_lista_titulo_licitacion"
             android:textAlignment="center"
             style="@style/Theme.AppLic.titulo"
             />

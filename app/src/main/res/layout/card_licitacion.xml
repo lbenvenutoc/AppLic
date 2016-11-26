@@ -14,20 +14,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
-            android:id="@+id/lblIdLicitacion"/>
+            android:id="@+id/codigoLicitacionTextView"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lblCatLicitacion"/>
+            android:id="@+id/categoriaLicitacionTextView"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lblDesLicitacion"/>
+            android:id="@+id/descripcionLicitacionTextView"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lblMonLicitacion"/>
+            android:id="@+id/valorReferencialLicitacionTextView"/>
 
     </LinearLayout>
 

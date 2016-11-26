@@ -30,18 +30,18 @@ import java.util.List;
 public class RegistroActivity extends AppCompatActivity {
 
     RecyclerView categoriaRecyclerView;
-    LinearLayout linear_pago;
-    RadioButton radio_si;
-    RadioButton radio_no;
-    Spinner cboTipoTarjeta;
+    LinearLayout pagoLinearLayout;
+    RadioButton siRadioButton;
+    RadioButton noRadioButton;
+    Spinner tipoTarjetaSpinner;
     CategoriaAdapter categoriaAdapter;
     LinearLayoutManager categoriaLayoutManager;
     List<Categoria> lstCategoriasTotales= new ArrayList<Categoria>();
-    EditText txtRuc;
-    EditText txtPassword;
-    EditText txtRazonSocial;
-    EditText txtNumTarjeta;
-    EditText txtCorreo;
+    EditText rucAutoCompleteTextView;
+    EditText claveAutoCompleteTextView;
+    EditText razonSocialAutoCompleteTextView;
+    EditText numeroTarjetaAutoCompleteTextView;
+    EditText correoAutoCompleteTextView;
 
 
 
@@ -50,18 +50,18 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        cboTipoTarjeta=(Spinner)findViewById(R.id.cboTipoTarjeta);
+        tipoTarjetaSpinner=(Spinner)findViewById(R.id.tipoTarjetaSpinner);
         categoriaRecyclerView = (RecyclerView) findViewById(R.id.categoriaRecyclerView);
-        linear_pago=(LinearLayout) findViewById(R.id.linear_pago);
-        txtRuc=(EditText)findViewById(R.id.txtRuc);
-        txtPassword=(EditText)findViewById(R.id.txtPassword);
-        txtRazonSocial=(EditText)findViewById(R.id.txtRazonSocial);
-        txtNumTarjeta=(EditText)findViewById(R.id.txtNumTarjeta);
-        txtCorreo=(EditText)findViewById(R.id.txtCorreo);
+        pagoLinearLayout=(LinearLayout) findViewById(R.id.pagoLinearLayout);
+        rucAutoCompleteTextView=(EditText)findViewById(R.id.rucAutoCompleteTextView);
+        claveAutoCompleteTextView=(EditText)findViewById(R.id.claveAutoCompleteTextView);
+        razonSocialAutoCompleteTextView=(EditText)findViewById(R.id.razonSocialAutoCompleteTextView);
+        numeroTarjetaAutoCompleteTextView=(EditText)findViewById(R.id.numeroTarjetaAutoCompleteTextView);
+        correoAutoCompleteTextView=(EditText)findViewById(R.id.correoAutoCompleteTextView);
 
-        radio_si=(RadioButton) findViewById(R.id.radio_si);
-        radio_si.setChecked(true);
-        radio_no=(RadioButton) findViewById(R.id.radio_no);
+        siRadioButton=(RadioButton) findViewById(R.id.siRadioButton);
+        siRadioButton.setChecked(true);
+        noRadioButton=(RadioButton) findViewById(R.id.noRadioButton);
 
         categoriaLayoutManager = new LinearLayoutManager(this);
         categoriaRecyclerView.setLayoutManager(categoriaLayoutManager);
@@ -89,44 +89,44 @@ public class RegistroActivity extends AppCompatActivity {
         boolean cancel = false;
         View focusView = null;
 
-        String rucCli=txtRuc.getText().toString();
-        String pasCli=txtPassword.getText().toString();
-        String corCli=txtCorreo.getText().toString();
-        String razSocCli=txtRazonSocial.getText().toString();
-        String numTarCli=txtNumTarjeta.getText().toString();
-        String tipTarCli=cboTipoTarjeta.getSelectedItem().toString();
+        String rucCli=rucAutoCompleteTextView.getText().toString();
+        String pasCli=claveAutoCompleteTextView.getText().toString();
+        String corCli=correoAutoCompleteTextView.getText().toString();
+        String razSocCli=razonSocialAutoCompleteTextView.getText().toString();
+        String numTarCli=numeroTarjetaAutoCompleteTextView.getText().toString();
+        String tipTarCli=tipoTarjetaSpinner.getSelectedItem().toString();
 
-        txtRuc.setError(null);
-        txtRazonSocial.setError(null);
-        txtCorreo.setError(null);
-        txtPassword.setError(null);
+        rucAutoCompleteTextView.setError(null);
+        razonSocialAutoCompleteTextView.setError(null);
+        correoAutoCompleteTextView.setError(null);
+        claveAutoCompleteTextView.setError(null);
 
         if(TextUtils.isEmpty(rucCli)){
-            txtRuc.setError("Ruc es requerido");
-            focusView = txtRuc;
+            rucAutoCompleteTextView.setError("Ruc es requerido");
+            focusView = rucAutoCompleteTextView;
             cancel = true;
         }
         else if(rucCli.length()<11){
-            txtRuc.setError("Ruc debe tener 11 dígitos");
-            focusView = txtRuc;
+            rucAutoCompleteTextView.setError("Ruc debe tener 11 dígitos");
+            focusView = rucAutoCompleteTextView;
             cancel = true;
         }
         else if(TextUtils.isEmpty(razSocCli)){
-            txtRazonSocial.setError("Razón Social es requerida");
-            focusView = txtRazonSocial;
+            razonSocialAutoCompleteTextView.setError("Razón Social es requerida");
+            focusView = razonSocialAutoCompleteTextView;
             cancel = true;
         }else if(TextUtils.isEmpty(corCli)){
-            txtCorreo.setError("Correo es requerido");
-            focusView = txtCorreo;
+            correoAutoCompleteTextView.setError("Correo es requerido");
+            focusView = correoAutoCompleteTextView;
             cancel = true;
         }else if(!corCli.contains("@")){
-            txtCorreo.setError("Correo es inválido");
-            focusView = txtCorreo;
+            correoAutoCompleteTextView.setError("Correo es inválido");
+            focusView = correoAutoCompleteTextView;
             cancel = true;
         }
         else if(TextUtils.isEmpty(pasCli)){
-            txtPassword.setError("Clave es requerida");
-            focusView = txtPassword;
+            claveAutoCompleteTextView.setError("Clave es requerida");
+            focusView = claveAutoCompleteTextView;
             cancel = true;
         }
 
@@ -144,7 +144,7 @@ public class RegistroActivity extends AppCompatActivity {
                 cliente.setRazSocCli(razSocCli);
                 cliente.setNumTarCli(numTarCli);
                 cliente.setTipTarCli(tipTarCli);
-                if(radio_si.isChecked()){
+                if(siRadioButton.isChecked()){
                     cliente.setFlgAboCli(1);
                 }else{
                     cliente.setFlgAboCli(0);
@@ -223,21 +223,21 @@ public class RegistroActivity extends AppCompatActivity {
         boolean checked = ((RadioButton) view).isChecked();
 
         switch(view.getId()) {
-            case R.id.radio_si:
+            case R.id.siRadioButton:
                 if (checked){
-                    linear_pago.setVisibility(View.VISIBLE);
-                    radio_no.setChecked(false);
+                    pagoLinearLayout.setVisibility(View.VISIBLE);
+                    noRadioButton.setChecked(false);
                 }else{
-                    linear_pago.setVisibility(View.GONE);
+                    pagoLinearLayout.setVisibility(View.GONE);
                 }
 
                     break;
-            case R.id.radio_no:
+            case R.id.noRadioButton:
                 if (checked){
-                    linear_pago.setVisibility(View.GONE);
-                    radio_si.setChecked(false);
+                    pagoLinearLayout.setVisibility(View.GONE);
+                    siRadioButton.setChecked(false);
                 }else{
-                    linear_pago.setVisibility(View.VISIBLE);
+                    pagoLinearLayout.setVisibility(View.VISIBLE);
                 }
 
                     break;

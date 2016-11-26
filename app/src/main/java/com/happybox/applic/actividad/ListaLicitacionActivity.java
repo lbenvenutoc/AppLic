@@ -26,8 +26,8 @@ import java.util.List;
 
 public class ListaLicitacionActivity extends AppCompatActivity {
     RecyclerView licitacionRecyclerView;
-    TextView lblUsuarioDes;
-    TextView lblStatusDes;
+    TextView clienteTextView;
+    TextView estatusTextView;
     LicitacionAdapter licitacionAdapter;
     LinearLayoutManager licitacionLayoutManager;
     List<Licitacion> lstLicitacionesTotales= new ArrayList<Licitacion>();
@@ -36,14 +36,14 @@ public class ListaLicitacionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_licitacion);
-        lblUsuarioDes =(TextView) findViewById(R.id.lblUsuarioDes);
-        lblStatusDes =(TextView) findViewById(R.id.lblStatusDes);
+        clienteTextView =(TextView) findViewById(R.id.clienteTextView);
+        estatusTextView =(TextView) findViewById(R.id.estatusTextView);
         licitacionRecyclerView = (RecyclerView) findViewById(R.id.licitacionRecyclerView);
 
         Intent intent = getIntent();
         Cliente cliente = (Cliente) intent.getExtras().getSerializable("cliente");
-        lblUsuarioDes.setText("Usuario: "+cliente.getRucCli()+" - "+cliente.getRazSocCli());
-        lblStatusDes.setText(cliente.getFlgAboCli()==0?"Estatus: Normal":"Estatus: VIP");
+        clienteTextView.setText("Usuario: "+cliente.getRucCli()+" - "+cliente.getRazSocCli());
+        estatusTextView.setText(cliente.getFlgAboCli()==0?"Estatus: Normal":"Estatus: VIP");
         flgEstatusCliente=cliente.getFlgAboCli();
         licitacionLayoutManager = new LinearLayoutManager(this);
         licitacionRecyclerView.setLayoutManager(licitacionLayoutManager);

@@ -15,12 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        android:text="Bienvenidos al App de Licitaciones"/>
+        android:text="@string/texto_bienvenida"/>
 
    <Button
        android:layout_width="match_parent"
        style="@style/Theme.AppLic.boton"
-       android:layout_height="match_parent" android:text="CONTINUAR"
+       android:layout_height="match_parent" android:text="@string/texto_boton_continuar"
        android:onClick="mostrarRegistro"/>
 
 </LinearLayout>

@@ -27,18 +27,17 @@ public class LoginActivity extends AppCompatActivity {
 
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
+    private AutoCompleteTextView emailAutoCompleteTextView;
+    private EditText claveEditText;
+    private View loginScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        mPasswordView = (EditText) findViewById(R.id.password);
+        emailAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.emailAutoCompleteTextView);
+        claveEditText = (EditText) findViewById(R.id.claveEditText);
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -48,8 +47,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        loginScrollView = findViewById(R.id.loginScrollView);
+
     }
 
 
@@ -63,23 +62,23 @@ public class LoginActivity extends AppCompatActivity {
 
         boolean cancel = false;
         View focusView = null;
-        String ruc = mEmailView.getText().toString();
-        String claUsu = mPasswordView.getText().toString();
+        String ruc = emailAutoCompleteTextView.getText().toString();
+        String claUsu = claveEditText.getText().toString();
 
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
+        emailAutoCompleteTextView.setError(null);
+        claveEditText.setError(null);
 
         if(TextUtils.isEmpty(ruc)){
-            mEmailView.setError("Ruc es requerido");
-            focusView = mEmailView;
+            emailAutoCompleteTextView.setError("Ruc es requerido");
+            focusView = emailAutoCompleteTextView;
             cancel = true;
         }else if(TextUtils.isEmpty(claUsu)){
-            mPasswordView.setError("Clave es requerida");
-            focusView = mEmailView;
+            claveEditText.setError("Clave es requerida");
+            focusView = emailAutoCompleteTextView;
             cancel = true;
         }else if(ruc.length()<11){
-            mEmailView.setError("Ruc debe tener 11 dígitos");
-            focusView = mEmailView;
+            emailAutoCompleteTextView.setError("Ruc debe tener 11 dígitos");
+            focusView = emailAutoCompleteTextView;
             cancel = true;
         }
 

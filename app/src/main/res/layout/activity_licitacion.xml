@@ -21,7 +21,7 @@
             />
 
         <TextView
-            android:text="LICITACION SELECCIONADA"
+            android:text="@string/texto_licitacion_titulo"
             style="@style/Theme.AppLic.titulo"
             android:textAlignment="center"
             />
@@ -37,7 +37,7 @@
         >
 
         <TextView
-            android:text="Informacion General"
+            android:text="@string/texto_licitacion_info"
             android:textSize="20dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -50,25 +50,25 @@
         >
 
             <TextView
-                android:id="@+id/lblNomenclatura"
+                android:id="@+id/nomenclaturaTextView"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 />
 
             <TextView
-                android:id="@+id/lblNormativaAplicable"
+                android:id="@+id/normativaTextView"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 />
 
             <TextView
-                android:id="@+id/lblVersionSeace"
+                android:id="@+id/seaceTextView"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 />
 
             <TextView
-                android:id="@+id/lblIdetificador"
+                android:id="@+id/identificadorTextView"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 />
@@ -87,7 +87,7 @@
             >
 
             <TextView
-                android:text="Informacion de la Entidad"
+                android:text="@string/texto_licitacion_entidad"
                 android:textSize="20dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -100,13 +100,13 @@
                 >
 
                 <TextView
-                    android:id="@+id/lblEntidadConvocante"
+                    android:id="@+id/entidadConvocanteTextView"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     />
 
                 <TextView
-                    android:id="@+id/lblDireccion"
+                    android:id="@+id/direccionTextView"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     />
@@ -127,7 +127,7 @@
             >
 
             <TextView
-                android:text="Informacion General del Procedimiento"
+                android:text="@string/texto_licitacion_procedimiento"
                 android:textSize="20dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -140,31 +140,31 @@
                 >
 
                 <TextView
-                    android:id="@+id/lblCategoria"
+                    android:id="@+id/categoriaTextView"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     />
 
                 <TextView
-                    android:id="@+id/lblResumen"
+                    android:id="@+id/resumenTextView"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     />
 
                 <TextView
-                    android:id="@+id/lblMonto"
+                    android:id="@+id/montoTextView"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     />
 
                 <TextView
-                    android:id="@+id/lblFechaPublicacion"
+                    android:id="@+id/fechaPublicacionTextView"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     />
 
                 <TextView
-                    android:id="@+id/lblFechaCierre"
+                    android:id="@+id/fechaCierreTextView"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     />

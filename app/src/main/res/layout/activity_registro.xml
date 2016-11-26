@@ -23,8 +23,7 @@
             />
 
         <TextView
-            android:id="@+id/lblTituloSolicitud"
-            android:text="REGISTRO"
+            android:text="@string/texto_registro_titulo"
             style="@style/Theme.AppLic.titulo"
             android:textAlignment="center"
 
@@ -48,10 +47,10 @@
                 android:layout_height="wrap_content">
 
             <AutoCompleteTextView
-                android:id="@+id/txtRuc"
+                android:id="@+id/rucAutoCompleteTextView"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="RUC"
+                android:hint="@string/texto_registro_ruc"
                 android:maxLines="1"
                 android:maxLength="11"
                 android:digits="1234567890"
@@ -65,8 +64,8 @@
                 android:layout_height="wrap_content">
 
             <AutoCompleteTextView
-                android:id="@+id/txtRazonSocial"
-                android:hint="Razón Social"
+                android:id="@+id/razonSocialAutoCompleteTextView"
+                android:hint="@string/texto_registro_razon"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
 
@@ -78,10 +77,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <AutoCompleteTextView
-                android:id="@+id/txtCorreo"
+                android:id="@+id/correoAutoCompleteTextView"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="Correo"
+                android:hint="@string/texto_registro_correo"
 
                 />
             </android.support.design.widget.TextInputLayout>
@@ -91,10 +90,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <AutoCompleteTextView
-                android:id="@+id/txtPassword"
+                android:id="@+id/claveAutoCompleteTextView"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="Clave"
+                android:hint="@string/texto_registro_clave"
                 android:inputType="textPassword"
                 />
 
@@ -102,10 +101,9 @@
 
 
             <TextView
-                android:id="@+id/lblListCategoria"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="Seleccione las categorias que se ajustan a su empresa"
+                android:text="@string/texto_seleccion_categorias"
                 />
 
 
@@ -116,10 +114,9 @@
                 android:id="@+id/categoriaRecyclerView"/>
 
             <TextView
-                android:id="@+id/lblAbono"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="¿Desea abonar para una cuenta VIP?"
+                android:text="@string/texto_abono"
                 />
 
             <LinearLayout
@@ -133,21 +130,21 @@
 
                 <RadioButton
                     android:layout_width="wrap_content"
-                    android:id="@+id/radio_si"
+                    android:id="@+id/siRadioButton"
                     android:layout_height="wrap_content"
-                    android:text="Si"
+                    android:text="@string/texto_radio_si"
                     android:onClick="mostrarPago"/>
 
                 <RadioButton
-                    android:id="@+id/radio_no"
+                    android:id="@+id/noRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No"
+                    android:text="@string/texto_radio_no"
                     android:onClick="mostrarPago"/>
 
             </LinearLayout>
 
-            <LinearLayout android:id="@+id/linear_pago"
+            <LinearLayout android:id="@+id/pagoLinearLayout"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
@@ -155,16 +152,15 @@
 
 
             <TextView
-                android:id="@+id/lblTipoTarjeta"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="Seleccione tipo de Tarjeta"
+                android:text="@string/texto_registro_tipo_tarjeta"
                 />
 
 
 
             <Spinner
-                android:id="@+id/cboTipoTarjeta"
+                android:id="@+id/tipoTarjetaSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/items"
@@ -176,10 +172,10 @@
                     android:layout_height="wrap_content">
 
                     <AutoCompleteTextView
-                android:id="@+id/txtNumTarjeta"
+                android:id="@+id/numeroTarjetaAutoCompleteTextView"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="Número de tarjeta"
+                android:hint="@string/texto_registro_numero_tarjeta"
                 android:maxLength="18"
                 android:digits="1234567890"
                 android:inputType="number"
@@ -192,7 +188,7 @@
 
                 android:onClick="registrarCliente"
                 style="@style/Theme.AppLic.boton"
-                android:text="TERMINAR"
+                android:text="@string/texto_boton_terminar"
                />
 
         </LinearLayout>
