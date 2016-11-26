@@ -9,7 +9,7 @@ import com.happybox.applic.R;
 
 public class BienvenidaActivity extends AppCompatActivity {
 
-    //BIENVENIDO PRUEBA INFEST
+    //BIENVENIDO PRUEBA INFEST 2
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
