@@ -14,6 +14,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.google.gson.reflect.TypeToken;
+import com.happybox.applic.LicApp;
 import com.happybox.applic.R;
 import com.happybox.applic.adaptador.LicitacionAdapter;
 import com.happybox.applic.modelo.Categoria;
@@ -32,6 +33,7 @@ public class ListaLicitacionActivity extends AppCompatActivity {
     LinearLayoutManager licitacionLayoutManager;
     List<Licitacion> lstLicitacionesTotales= new ArrayList<Licitacion>();
     int flgEstatusCliente=0;
+    Cliente cliente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +42,10 @@ public class ListaLicitacionActivity extends AppCompatActivity {
         estatusTextView =(TextView) findViewById(R.id.estatusTextView);
         licitacionRecyclerView = (RecyclerView) findViewById(R.id.licitacionRecyclerView);
 
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         Cliente cliente = (Cliente) intent.getExtras().getSerializable("cliente");
+        */
+        cliente = LicApp.obtenerInstancia().obtenerServicio().getCliente();
         clienteTextView.setText("Usuario: "+cliente.getRucCli()+" - "+cliente.getRazSocCli());
         estatusTextView.setText(cliente.getFlgAboCli()==0?"Estatus: Normal":"Estatus: VIP");
         flgEstatusCliente=cliente.getFlgAboCli();

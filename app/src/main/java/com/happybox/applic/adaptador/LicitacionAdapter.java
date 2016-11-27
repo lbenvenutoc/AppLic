@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.happybox.applic.LicApp;
 import com.happybox.applic.R;
 import com.happybox.applic.actividad.LicitacionActivity;
 import com.happybox.applic.modelo.Licitacion;
@@ -26,17 +28,17 @@ public class LicitacionAdapter extends RecyclerView.Adapter<LicitacionAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(LicitacionAdapter.ViewHolder holder, int position) {
-        holder.codigoLicitacionTextView.setText("Código: "+licitaciones.get(position).getCodLic());
+    public void onBindViewHolder(LicitacionAdapter.ViewHolder holder,final int position) {        holder.codigoLicitacionTextView.setText("Código: "+licitaciones.get(position).getCodLic());
         holder.categoriaLicitacionTextView.setText("Categoria: "+licitaciones.get(position).getDesCat());
         holder.descripcionLicitacionTextView.setText("Resumen: "+licitaciones.get(position).getDesLic());
         holder.valorReferencialLicitacionTextView.setText("Valor Referencial: "+licitaciones.get(position).getValRef()+" "+licitaciones.get(position).getMonLic());
-        final int pos = position;
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    LicApp.obtenerInstancia().obtenerServicio().setLicitacion(licitaciones.get(position));
                     Intent intent = new Intent (v.getContext(), LicitacionActivity.class);
-                    intent.putExtra("licitacion", licitaciones.get(pos));
+                    //intent.putExtra("licitacion", licitaciones.get(position));
                     v.getContext().startActivity(intent);
                 }
 

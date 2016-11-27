@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.happybox.applic.LicApp;
 import com.happybox.applic.R;
 import com.happybox.applic.modelo.Licitacion;
 
@@ -21,6 +23,7 @@ public class LicitacionActivity extends AppCompatActivity {
     TextView montoTextView;
     TextView fechaPublicacionTextView;
     TextView fechaCierreTextView;
+    Licitacion licitacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +41,12 @@ public class LicitacionActivity extends AppCompatActivity {
         fechaPublicacionTextView=(TextView) findViewById(R.id.fechaPublicacionTextView);
         fechaCierreTextView=(TextView) findViewById(R.id.fechaCierreTextView);
 
+        licitacion= LicApp.obtenerInstancia().obtenerServicio().getLicitacion();
+
+        /*
         Intent intent = getIntent();
         Licitacion licitacion = (Licitacion) intent.getExtras().getSerializable("licitacion");
+        */
 
         identificadorTextView.setText("Identificador de Convocatoria: "+licitacion.getCodLic());
         nomenclaturaTextView.setText("Nomenclatura: "+licitacion.getNomLic());

@@ -17,6 +17,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.google.gson.reflect.TypeToken;
+import com.happybox.applic.LicApp;
 import com.happybox.applic.R;
 import com.happybox.applic.modelo.Cliente;
 
@@ -110,8 +111,9 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(getBaseContext(), "Usuario y/o clave incorrectos",
                                     Toast.LENGTH_SHORT).show();
                         }else{
+                            LicApp.obtenerInstancia().obtenerServicio().setCliente(cliente);
                             Intent objIntent = new Intent(getBaseContext(),ListaLicitacionActivity.class);
-                            objIntent.putExtra("cliente", cliente);
+                            //objIntent.putExtra("cliente", cliente);
                             startActivity(objIntent);
                         }
                     }
