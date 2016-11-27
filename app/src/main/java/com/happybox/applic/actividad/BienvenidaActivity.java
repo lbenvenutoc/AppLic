@@ -9,7 +9,7 @@ import com.happybox.applic.R;
 
 public class BienvenidaActivity extends AppCompatActivity {
 
-    //BIENVENIDO 11
+    //Prueba vigo
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
