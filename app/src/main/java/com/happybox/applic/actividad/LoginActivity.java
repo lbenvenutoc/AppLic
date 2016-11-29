@@ -1,6 +1,7 @@
 package com.happybox.applic.actividad;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +22,6 @@ import com.google.gson.reflect.TypeToken;
 import com.happybox.applic.LicApp;
 import com.happybox.applic.R;
 import com.happybox.applic.modelo.Cliente;
-
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -49,6 +49,15 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         loginScrollView = findViewById(R.id.loginScrollView);
+
+        //if(sharedPreferences==null){
+            sharedPreferences = getBaseContext().getSharedPreferences(
+                    LicApp.obtenerInstancia().obtenerServicio().PREFS, Context.MODE_PRIVATE);
+            String usuario=sharedPreferences.getString(LicApp.obtenerInstancia().obtenerServicio().PREF_USUARIO, "");
+            String clave=sharedPreferences.getString(LicApp.obtenerInstancia().obtenerServicio().PREF_CLAVE, "");
+            emailAutoCompleteTextView.setText(usuario);
+            claveEditText.setText(clave);
+        //}
 
     }
 
@@ -81,19 +90,12 @@ public class LoginActivity extends AppCompatActivity {
            focusView.requestFocus();
        }else{
             procesarAcceso(ruc,claUsu);
-
-            sharedPreferences =  getSharedPreferences(LicApp.obtenerInstancia().obtenerServicio().PREFS, MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(LicApp.obtenerInstancia().obtenerServicio().PREF_USUARIO, ruc);
-            editor.putString(LicApp.obtenerInstancia().obtenerServicio().PREF_CLAVE, claUsu);
-            editor.commit();
-
         }
 
     }
 
 
-    public void procesarAcceso(String ruc, String claUsu){
+    public void procesarAcceso(final String ruc, final String claUsu){
 
         AndroidNetworking.get(getResources().getString(R.string.url_base)+getResources().getString(R.string.url_obtiene_cliente))
                 .addPathParameter("ruc", ruc)
@@ -109,8 +111,12 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                         }else{
                             LicApp.obtenerInstancia().obtenerServicio().setCliente(cliente);
+                            sharedPreferences =  getSharedPreferences(LicApp.obtenerInstancia().obtenerServicio().PREFS, MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString(LicApp.obtenerInstancia().obtenerServicio().PREF_USUARIO, ruc);
+                            editor.putString(LicApp.obtenerInstancia().obtenerServicio().PREF_CLAVE, claUsu);
+                            editor.commit();
                             Intent objIntent = new Intent(getBaseContext(),ListaLicitacionActivity.class);
-                            //objIntent.putExtra("cliente", cliente);
                             startActivity(objIntent);
                         }
                     }

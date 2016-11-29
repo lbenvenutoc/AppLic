@@ -33,7 +33,10 @@ public class Utilitario {
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(icono)
                         .setContentTitle(titulo)
-                        .setContentText(descripcion);
+                        .setContentText(descripcion)
+                        .setStyle(new NotificationCompat.BigTextStyle()
+                                .bigText(descripcion));
+
         // Add as notification
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(0, builder.build());

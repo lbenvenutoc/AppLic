@@ -73,8 +73,7 @@ public class ConexionReceptor extends BroadcastReceiver {
                                                     @Override
                                                     public void onResponse(Notificacion response) {
                                                         resultado+=response.getNumeroNorificacionesPorVencer();
-                                                        Utilitario.crearNotificacion(context,R.drawable.ic_check_ok,"AppLic","Hola "+cliente.getRucCli()+" "+resultado);
-
+                                                        Utilitario.crearNotificacion(context,R.drawable.ic_check_ok,"AppLic","Hola "+cliente.getRucCli()+" revise la información del app, pues estan por caducar "+resultado+" licitaciones");
                                                     }
 
                                                     @Override
