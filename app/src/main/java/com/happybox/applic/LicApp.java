@@ -2,6 +2,7 @@ package com.happybox.applic;
 
 import android.app.Application;
 
+import com.happybox.applic.receptor.ConexionReceptor;
 import com.happybox.applic.servicio.ServicioLicitacion;
 
 /**
@@ -25,5 +26,7 @@ public class LicApp extends Application {
     public ServicioLicitacion obtenerServicio() {
         return servicio;
     }
+
+
 
 }

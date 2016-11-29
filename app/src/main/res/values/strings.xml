@@ -27,6 +27,7 @@
 
     <!--URL LICITACIONES-->
     <string name="url_lista_licitaciones">licitaciones/{codCat}/{flgAboCli}</string>
+    <string name="url_nrolicitaciones_caduca">licitaciones/porvencer/{codCat}</string>
 
     <!--FORMULARIO BIENVENIDA -->
     <string name="texto_bienvenida">Bienvenidos al App de Licitaciones</string>

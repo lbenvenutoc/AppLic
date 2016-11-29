@@ -12,6 +12,11 @@ public class ServicioLicitacion {
     private Cliente cliente;
     private Licitacion licitacion;
 
+    //CONSTANTES PREFERENCIAS
+    public static String PREFS = "prefs";
+    public static String PREF_USUARIO = "usuario";
+    public static String PREF_CLAVE = "clave";
+
 
     public Cliente getCliente() {
         return cliente;

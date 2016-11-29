@@ -2,6 +2,7 @@ package com.happybox.applic.actividad;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -25,18 +26,17 @@ import com.happybox.applic.modelo.Cliente;
 
 public class LoginActivity extends AppCompatActivity {
 
-
-
-    // UI references.
     private AutoCompleteTextView emailAutoCompleteTextView;
     private EditText claveEditText;
     private View loginScrollView;
+
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // Set up the login form.
+
         emailAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.emailAutoCompleteTextView);
         claveEditText = (EditText) findViewById(R.id.claveEditText);
 
@@ -51,12 +51,6 @@ public class LoginActivity extends AppCompatActivity {
         loginScrollView = findViewById(R.id.loginScrollView);
 
     }
-
-
-
-
-
-
 
     private void attemptLogin() {
 
@@ -87,14 +81,17 @@ public class LoginActivity extends AppCompatActivity {
            focusView.requestFocus();
        }else{
             procesarAcceso(ruc,claUsu);
+
+            sharedPreferences =  getSharedPreferences(LicApp.obtenerInstancia().obtenerServicio().PREFS, MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(LicApp.obtenerInstancia().obtenerServicio().PREF_USUARIO, ruc);
+            editor.putString(LicApp.obtenerInstancia().obtenerServicio().PREF_CLAVE, claUsu);
+            editor.commit();
+
         }
 
-
-
-
-
-
     }
+
 
     public void procesarAcceso(String ruc, String claUsu){
 
